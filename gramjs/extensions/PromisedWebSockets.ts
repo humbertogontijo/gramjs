@@ -96,8 +96,8 @@ export class PromisedWebSockets {
                     this.closed = true;
                 };
                 //CONTEST
-                if (isBrowser && typeof window !== "undefined") {
-                    window.addEventListener("offline", async () => {
+                if (isBrowser) {
+                    self.addEventListener("offline", async () => {
                         await this.close();
                         if (this.resolveRead) {
                             this.resolveRead(false);
